@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Whitepaper v1.0 - DAO Nation</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3476e10d-e4a7-4ad5-abcf-782ef3a17e9f" class="page sans"><header><img class="page-cover-image" src="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/DAO_Nation_-_Header.png" style="object-position:center 87.45%"/><h1 class="page-title">Whitepaper v1.0 - DAO Nation</h1></header><div class="page-body"><p id="99e482a0-4bea-4baf-ae17-75466be1626b" class="">Published: April 23th, 2022</p><p id="1ff32f03-b669-44e4-8023-42454df51169" class="">Last update: April 30th, 2022</p><figure id="913ee74e-f0d5-4a14-b9da-16d61bdbe43f" class="image"><a href="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/DAO_Nation.png"><img style="width:1600px" src="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/DAO_Nation.png"/></a></figure><h1 id="c040f449-96cf-4d6a-a9d5-d908625d9b73" class="">Table of Content</h1><nav id="dbe5345d-7051-4c3d-b55f-2beedbf1de29" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c040f449-96cf-4d6a-a9d5-d908625d9b73">Table of Content</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1a683851-d90c-465a-83eb-a556f8f07767">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ebad4ee8-e4be-4e73-8648-ecb60e2495ad">The Problem </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4bc8460e-1167-4511-bf0f-cbeb5b0c09ca">The Mission</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a4310236-82ee-4af5-8e98-804c9eb56d6c">The Team </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#39582c5c-9453-4636-ad86-f2ca6039d1a8">DAO Arms </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#85957ffd-ea9f-42a0-ac29-94b2e148d717">1. Product Development</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#be676a4b-09e6-4df3-a88c-7d9debc656fa">2. Governance &amp; Coordination</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5864c454-3e26-4e0d-8ff6-9daf78306768">3. Growth &amp; Marketing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#bbd50048-b5f4-49f3-97a8-ddc5c96268d5">4. Community &amp; Education</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6503e0f4-a8d0-459e-99e8-846f6043f65f">5. Incubation &amp; Investments</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5ca31705-9000-482c-ad69-38c1cfb272fc">SubDAOs and Working Groups Structure</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#073d4162-c924-4063-8a07-a48c67c234ec">Tokenomics as Governance</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8df88b3a-e57b-4ab0-a974-5ce3bcf183c6">Token Utility</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#12ffb8f3-5b71-4e7e-9bc3-c26491228910">veESG</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ccbeae46-5757-4c1a-b1a0-fd8330e005e9">Token Allocation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#63c58a32-8056-44cd-9d49-f56786c143a3">Governance Mining in Practice </a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#62dcccbb-8837-48a7-b9b9-efba05aa1690">KPI &amp; Bounty Driven Governance Mining</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#74349a92-5fb7-42b1-a709-7f0301575fef">Product Development</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#77711e01-a72c-4840-98e3-7343c342e05e">Growth &amp; Marketing</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5e9d22b2-dfcb-4cd8-8cc8-d37f136b95b5">Community &amp; Education</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#386e2aad-28c7-4deb-8301-c6f99553b450">Incubation &amp; Investments</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6dff108a-2c15-44cb-b888-64d5d13a64ea">Governance &amp; Coordination</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1afaecf1-8c19-4e08-a6ea-69231f60eb86">DAO Nation Infrastructure Roadmap</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4d91a28a-6c46-4771-89b7-18c9554a7479">Token Launchpad</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#83695cb8-9ede-4e0d-bc80-d64fd8d0d4ee"><strong>Bonds</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#88d77a7b-ac2d-43cf-8682-2c45ec242ece">ReFinder</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b4e833ae-c0fd-4acb-98e5-95fa426fe549">ReFi Index &amp; ETF</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3726e39a-1a1e-4e54-a99a-061ac6d80fc0">DAO Nation Fellowships</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#44be8073-7830-4cd4-a030-50594dd01cd2">DAO Incubation as a Service</a></div></nav><h1 id="1a683851-d90c-465a-83eb-a556f8f07767" class="">Introduction</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="50e87a4e-a9a8-46d4-bc03-e71107f64507"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Leveraging the power of collaborative governance &amp; DeFi to establish a regenerative circular economy.</div></figure><h2 id="ebad4ee8-e4be-4e73-8648-ecb60e2495ad" class="">The Problem </h2><p id="43e30a56-c65d-42b7-8e73-36e922b877cd" class="">The institutional Environmental, Social, and Governance (ESG) efforts for many years have been at the mercy of spending power and influenced by hostile actors. These forces have no interest in solving humanity&#x27;s most pressing problems. </p><p id="c7e5dc58-efaf-4ba5-932c-dc223eeed0d9" class="">
+</p><p id="2bdebafc-0f9f-4355-834c-0e44206e8ae8" class="">On the environmental side of ESG, impact projects have ranged from increasing biodiversity, coral reef de-acidification, water depletion, and many more efforts to ward off a climate crisis. The social side of ESG has seen both climate and social activism, with projects that range from protecting individual rights and gender equality to sustainable lifestyle change and veganism. Whether the social impact project is aimed at preserving the Amazon or protecting global gay rights, they are all failing to co-build a better future for the same reasons:</p><p id="4dc3212e-43cb-46f5-8d55-f6af4e5a515c" class="">
+</p><ol type="1" id="5aa0150b-83b8-438e-b8cf-ad72dad23ec4" class="numbered-list" start="1"><li>They lack transparent capital allocation</li></ol><ol type="1" id="84f176d2-57a3-45c2-aaf2-97c5f918895c" class="numbered-list" start="2"><li>The lack of greener, geographically translatable solutions</li></ol><ol type="1" id="02d11cbc-6576-41fa-961d-1aaba17c226d" class="numbered-list" start="3"><li>They do not achieve physical decarbonization at scale</li></ol><ol type="1" id="88f4a4c7-d4dc-400e-bd46-6c866a490f07" class="numbered-list" start="4"><li>They are under-funding and underdeveloped in regenerative sectors.</li></ol><p id="4d913b89-8c0b-4993-94c7-d87f47206468" class="">
+</p><p id="d2dd3422-ef3c-4293-bebe-dd94022a8e7f" class="">Climate risk poses an existential problem to all businesses in the global economy. Regenerative businesses, beginning to be understood as “ReFi” or Regenerative Finance, are enabled by tokens and tokenomics, blockchain technology, decentralized ownership, and innovative strategies. Regenerative businesses will address transparent and efficient resource allocation based on merit, sustainability, and long-term social impact. The unlock of both the strategy and tools to accomplish this will be a massive force for regenerative businesses to mobilize and coordinate global communities. They will empower their members through frictionless, decentralized change. DAO Nation will sit at the forefront of this change and seeks to build a <strong>fully decentralized ecosystem, that provides a sustainable, collaborative and financial infrastructure as an ESG-focused incubator.</strong></p><h2 id="4bc8460e-1167-4511-bf0f-cbeb5b0c09ca" class="">The Mission</h2><p id="240c5818-379d-4cac-82a8-77658d14df87" class="">DAO Nation will sit at the forefront of this change and seeks to build a <strong>fully decentralized ReFi ecosystem, that provides a sustainable, collaborative and financial infrastructure as an ESG-focused incubator.</strong></p><p id="9f03f50d-951d-4a56-864f-d7a40710dd6a" class="">We hold a vision of ReFi as the next stage of crypto and web3 that is funding, supporting, and connecting regenerative projects and teams. These projects have been traditionally underfunded and underserved, creating impact blindspots. We see a future that is solving the world’s most pressing problems and aligns incentives toward good and circular economies. </p><p id="1cadb2e8-4684-491d-9341-18188549194d" class="">
+</p><p id="a8b0c857-3d0f-4764-9efc-c675be0d0cc3" class=""><strong>DAO Nation’s strategy for achieving this vision:</strong></p><p id="d4a00f41-656a-42a9-8103-c5ca564c36c1" class="">
+</p><ul id="d2127411-9768-4b79-b8bb-2ce0caf06097" class="bulleted-list"><li style="list-style-type:disc">Build the technical infrastructure for global ReFi adoption.</li></ul><ul id="60668b53-ae84-4853-94a2-2e5ff35e5611" class="bulleted-list"><li style="list-style-type:disc">With access to capital, knowledge, and talent we will be able to effectively support a wide array of ReFi initiatives and contribute to making the world a better place.</li></ul><ul id="8fe1c8fa-34ea-40e1-ab1b-1a66147eb009" class="bulleted-list"><li style="list-style-type:disc">Leveraging the power of collaborative governance to establish a regenerative circular economy.</li></ul><ul id="8c59608e-4310-445b-bb0c-9e4472468793" class="bulleted-list"><li style="list-style-type:disc">Affect all aspects of ESG for both individuals and groups through:<ol type="1" id="95df5e3c-d493-44b6-af0d-7d660c281b32" class="numbered-list" start="1"><li>Education</li></ol><ol type="1" id="003dfda0-24f8-4ea7-ae2a-0ac17713f31c" class="numbered-list" start="2"><li>Funding</li></ol><ol type="1" id="461c3656-0722-4d92-a21f-f47b4fdc08bc" class="numbered-list" start="3"><li>Community Engagement</li></ol></li></ul><p id="5174c958-e929-462a-97a7-1754a381a407" class="">
+</p><p id="5d7948f5-eef2-41f5-a74d-f405af6cc463" class="">DAO Nation&#x27;s goal is to provide infrastructure &amp; tooling for regenerative businesses on a global scale. so they can focus on solving the world’s most pressing problems. This includes funding capable founders, getting them connected to investors &amp; peers, and educating and empowering future founders.</p><h1 id="a4310236-82ee-4af5-8e98-804c9eb56d6c" class="">The Team </h1><p id="6456441e-f6ae-4613-b01a-f45d99aea5af" class="">The initial team members for DAO Nation have gathered to experiment with how Social Impact DAOs operate. The team’s combined knowledge and expertise, from experiences in venture capital, marketing, ESG, R&amp;D, and other sectors, will be what’s needed to achieve DAO Nation’s goals, fueled more by the steady expansion of the DAO with like-minded, passionate, and skilled individuals that will lead the future of ReFi and become pioneers for it.</p><p id="77144b48-187e-4a9c-8aa8-84805bb34e60" class="">
+</p><p id="20738b23-5d17-4aa8-a5c2-052d72822c63" class=""><strong>Kurapika → Lead, Growth Steward</strong></p><p id="1a0acf1c-20fe-495d-a301-5e6d54cf99fb" class="">Founded a leading rating platform &amp; consultancy firm for ICOs and protocols in 2017, using a proprietary analysis methodology. Advised selected project that raised over $400m. Spent 7 years in the fintech industry, working closely with venture capital firms on valuation metrics, indices, and other insights products.</p><p id="48cce3c4-ff08-493b-ab1c-88f980028e35" class=""><strong>Bagelnumberfive</strong><strong> → Due-diligence Steward</strong></p><p id="806631e7-e6ac-467b-83c1-0dfae8f04016" class="">10+ years of experience in capital markets and startup management. Led two companies through funding rounds, where one had an ESG focus. Investing experience across multiple asset classes. Highly skilled in open-source intelligence (OSINT), particularly focused on venture deal origination and due diligence. Frequently participates in non-profit OSINT work and CTF events.</p><p id="da5f6cc2-f3e4-48ea-b4f2-25f4efb3dcf4" class=""><strong>Vincenzospaghetti → Social Impact Steward </strong></p><p id="a2899366-30d8-4090-b29d-37a17bd299a9" class="">Head of Blockchain for a nonprofit in the renewable energy sector. Has held various positions at the intersections of sustainability, social impact, impact investing, and technology. Founded @therefiedge Twitter, and is a freelance consultant moving crypto and blockchain startups through their startup lifecycle. Formerly a strategic transformations consultant for a Fortune 50. A change-maker and systems thinker who is passionate about executing sound strategy and putting ESG principles at the forefront.</p><p id="32ac66bb-1d37-44d6-bd7b-1256d7d266f3" class=""><strong>Harry Chen → Development Steward</strong></p><p id="ee5ab5f9-803b-4367-afbd-66a4989c5268" class="">Blockchain and Web development expert, with 8 years of experience in these fields, 4 of which in smart contract development. Have previously worked with BSCpad, Exodus, and other leading protocols as a team leader.</p><p id="6246b03b-22fb-48f2-a3d8-c80dd64f8f7d" class=""><strong>Casstoshi → Coordination Steward</strong></p><p id="a10ba620-0aca-4c1b-99c7-1e8c8fbeb572" class="">10+ years in business management &amp; digital marketing strategy. Previous experience as a Paralegal. 2.5 years of focusing on DeFi.</p><p id="87b29a1f-e7e6-4db8-aa14-30d7ecacaa34" class=""><strong>Sonny Vesali → Product Steward</strong></p><p id="40341f72-58ab-4858-93c3-5dda3b84a47c" class="">Founded and led the engineering of a paid crypto job board platform for connecting early-stage DAO founders to early-stage DAO contributors. Led product development cycles with user interviews, founder outreach, and growth of the platform altogether.</p><p id="d29d0cc2-78d6-478e-8c4b-9ae3333b8917" class=""><strong>FreakOrama → Community Steward</strong></p><p id="0a9e0100-a69c-44c7-8848-141b24b8b3f1" class="">Blockchain community consultant, technology journalist, and social media manager with experience in multiple on-chain projects.</p><p id="2cfcd381-bf0c-4be7-ba96-534b6ab853e6" class=""><strong>James → Senior Advisor</strong></p><p id="d21e4cfa-0d4c-40ea-8e65-9d78501e2846" class="">Founder of Astron Venture. Extensive background with hedge funds, investment banking and rating agencies. Deep experience in on-chain derivatives. Authored a book on DAO Governance.</p><h2 id="39582c5c-9453-4636-ad86-f2ca6039d1a8" class="">DAO Arms </h2><p id="e334d185-5e9d-417c-bf2f-164c1e0bda69" class="">There will be 5 key DAO Arms to kickoff DAO Nation, which will operate autonomously as subDAOs:</p><h3 id="85957ffd-ea9f-42a0-ac29-94b2e148d717" class="">1. Product Development</h3><p id="52c6ef17-6734-4650-80b6-1fffbf3829af" class="">The Product Development team exists to build products that empower the community to build the future of regenerative finance. This includes designing new features, building new products, and improving current products. </p><h3 id="be676a4b-09e6-4df3-a88c-7d9debc656fa" class="">2. Governance &amp; Coordination</h3><p id="3e2f559b-3034-4e4d-8e01-55cba7a7a888" class="">The Governance &amp; Coordination team is responsible for understanding the state &amp; helping each of the subDAOs, and to act as the facilitator of collaboration between the subDAOs to accomplish DAO Nation’s mission. This includes implementing transparency models, creating synergies, and managing the hiring process for the various subDAOs.</p><h3 id="5864c454-3e26-4e0d-8ff6-9daf78306768" class="">3. Growth &amp; Marketing</h3><p id="53c6abd7-4035-4d8a-a4f1-a0089d29adb0" class="">The Growth &amp; Marketing teams are responsible for the growth of DAO Nation’s presence in the ReFi ecosystem, as well as for supporting its subDAOs. This takes many forms like social media campaigns, holding off or online events, hosting joint hackathons,</p><h3 id="bbd50048-b5f4-49f3-97a8-ddc5c96268d5" class="">4. Community &amp; Education</h3><p id="1aa3cf41-89dc-45bc-a62b-27c2909e6af1" class="">The Community &amp; Education team is responsible for creating educational materials, and workshops, and facilitating community dialogue. Along with that, streamlining the process to help onboard new members into DAO Nation and into an appropriate subDAO, and getting them ready to handle tasks and responsibilities of being a DAO contributor.</p><h3 id="6503e0f4-a8d0-459e-99e8-846f6043f65f" class="">5. Incubation &amp; Investments</h3><p id="ce3a7ea3-7aed-4f85-933d-795dc3c149de" class="">The Incubation &amp; Investments team conducts research and due diligence on potential impact investments, as well as projects/teams that apply for funding through the incubator. They ensure the validity of the provided information, provide a thorough analysis of protocols and markets, and present their findings to the GP committee. The investment arm’s advisory team works alongside incubated projects to provide support and monitor progress. The I&amp;I teams also deliver big-picture market insights to inform DAO Nation’s overall direction and strategy.</p><h3 id="5ca31705-9000-482c-ad69-38c1cfb272fc" class="">SubDAOs and Working Groups Structure</h3><figure id="069e3d85-fe49-4b68-84c5-e9ce3fa933c0" class="image"><a href="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/DAO_Nation_-_Org_Flow.png"><img style="width:5676px" src="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/DAO_Nation_-_Org_Flow.png"/></a></figure><blockquote id="07ca3429-5b21-42d9-8bce-2ba63c391eb1" class="">DAO arms can vote to add new working groups based on needs.</blockquote><h1 id="073d4162-c924-4063-8a07-a48c67c234ec" class="">Tokenomics as Governance</h1><p id="dd524b87-a0c5-4eac-94eb-310b8755a1d8" class="">DAO Nation is allocating 40% of the total supply of the $ESG token to the treasury to be ‘mined’ by the community through retainers, initiatives, or any activity that is in the long-term interest of the DAO. This process is formally called <strong>Governance Mining</strong>, where community members can earn $ESG rewards through direct participation in the network. </p><p id="559261fe-221f-4538-b16e-b700144a7f9b" class="">Participation implies generating growth and decentralization by impacting governance events, contributing to any of DAO Nations’ arms, or building a <strong>ventureDAO </strong>- an autonomous DAO within the DAO Nation ecosystem.</p><p id="eac35822-e003-4ba2-bf8d-d3432327de9b" class="">This ensures that the most active actors in the community get more influence over the future of the DAO.</p><p id="3b73d5ac-cd66-4366-9a83-b973aae670dd" class=""><strong>Working Groups</strong> are the proposed format for community members to band together as teams within the different<strong> </strong>parentDAO<strong> </strong>arms, or incubated projects aimed to be spawned as a ventureDAO. </p><p id="9b02f9e2-89c8-4211-af0f-66196484b53d" class="">Each working group will submit its proposals and budget requests to its relevant DAO arm. Working Groups will submit updates on key KPIs on their progress to allow transparency and data for community members to vote on.</p><p id="23e9f077-c125-4608-a516-893c0938742a" class="">A differentiation that should be made between subDAOs:</p><ul id="e0155b30-ed3b-4630-94c8-409c07d5fc2d" class="bulleted-list"><li style="list-style-type:disc">DAO Arms, or Department subDAOs, are comprised of various working groups operating as teams within each arm.</li></ul><ul id="62c20b2c-3a67-4838-8c85-5c82d64f3836" class="bulleted-list"><li style="list-style-type:disc">Venture subDAOs are entrepreneurial working groups that spin out as their own sovereign DAOs.</li></ul><p id="32335451-3e64-4406-b7cf-76bf26d894de" class="">DAO Nation plans to finance both of these - department working groups via governance mining, and ventureDAOs via direct funding made by the Investment Arm. </p><p id="781f1e48-3985-4b03-bf6d-1a8f01a25310" class="">As far as subDAO-driven governance is concerned, each working group will be given a non-transferrable NFT as their working group vote on a proposal. For the obvious conflict of interest reasons, working group members cannot vote in parentDAO decisions directly related to them.</p><figure id="e9537f92-7e8a-424c-8c61-aa469480babe" class="image"><a href="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/DAO_Nation_-_Tokenomics_(Community)_(6).png"><img style="width:5936px" src="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/DAO_Nation_-_Tokenomics_(Community)_(6).png"/></a></figure><h2 id="8df88b3a-e57b-4ab0-a974-5ce3bcf183c6" class="">Token Utility</h2><p id="e60efbc6-bef0-4ea2-9341-9dd9a5271026" class="">DAO Nation’s $ESG token will be utilized by holders throughout the DAOs’ ecosystem of products and services, from staking &amp; bonding to participating in verified IDOs on the launchpads.</p><p id="b5e35588-c72f-4ef2-ac20-12f1110e5415" class=""><strong>Members who stake their tokens accumulate veESG - the native governance token</strong>, so that they can take part in the parentDAOs’ voting and applying proposals. Governance participants will then be rewarded with $ESG for their contributions.</p><p id="ceae335e-df59-47cb-a4a9-7bd0d9216d6e" class="">Token holders will also be able to participate in liquidity pools to provide and increase liquidity for $ESG with other tokens, and then use DAO Nation’s bonding feature.</p><h3 id="12ffb8f3-5b71-4e7e-9bc3-c26491228910" class="">veESG</h3><p id="1e83e236-8e11-4549-a59f-b555c1b921c0" class="">As mentioned above, in order to participate in the governance process of DAO Nation and form various working groups - $ESG holders will be required to lock up their $ESG in staking contracts. </p><p id="f5cf4457-dcc5-492c-9cc5-fe1d1bbbc99a" class="">$ESG stakers will be rewarded with the non-transferrable governance token veESG. </p><p id="1c92c3cd-5b86-4858-a03a-c4bda8ace149" class="">Longer lock-up periods result in greater veESG rewards. As a result, the people with the most confidence get more influence on community governance matters. To further incentivize governance participation those who actively vote and submit proposals get $ESG in return.</p><p id="dc6999c3-f4ba-42d4-8bc5-5273838b1482" class="">Incentivizing staking and governance participation comes with the following benefits:</p><ul id="79ac8fa4-ede7-40e1-a4a1-0e825bd96fa7" class="bulleted-list"><li style="list-style-type:disc">Rewards long-term holders</li></ul><ul id="ce2b33e6-d029-4bd4-8253-83522e099b7d" class="bulleted-list"><li style="list-style-type:disc">Drives community engagement</li></ul><ul id="e371a336-2916-401a-9b2e-e7e87ed95a6a" class="bulleted-list"><li style="list-style-type:disc">Decentralization of decision-making</li></ul><h2 id="ccbeae46-5757-4c1a-b1a0-fd8330e005e9" class="">Token Allocation</h2><figure id="d51c16ef-0272-422e-a54e-acddd2513e8d" class="image"><a href="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/Budget_Pie_Chart_(1).png"><img style="width:1024px" src="Whitepaper%20v1%200%20-%20DAO%20Nation%20913ee74ef0d54a14b9da16d61bdbe43f/Budget_Pie_Chart_(1).png"/></a></figure><blockquote id="9697a6a1-361b-4063-9136-8b1e3e63b030" class="">Team, advisors, and seed investors are subjected to a 6-months cliff &amp; linear vesting locking period of 24 months</blockquote><h2 id="63c58a32-8056-44cd-9d49-f56786c143a3" class="">Governance Mining in Practice </h2><h3 id="62dcccbb-8837-48a7-b9b9-efba05aa1690" class="">KPI &amp; Bounty Driven Governance Mining</h3><p id="5bc8584d-010f-4ef9-8859-ab9d344cea66" class="">DAO Nation’s $ESG supply will be mined primarily from department subDAOs retainers and governance events. VentureDAO, on the other hand, are initiatives that require funding to be issued primally from the DAO Nation treasury. This gives DAO Nation the benefits of top-down coordination in parallel with bottom-up innovation and community efforts. Bounties will vary largely from conducting &amp; recording user interviews, and subgraph development, to research, analysis &amp; due diligence. Given the wide spectrum of tasks &amp; initiatives, each arm will have its own KPIs to determine future financing.</p><h3 id="74349a92-5fb7-42b1-a709-7f0301575fef" class="">Product Development</h3><p id="963f33d1-e702-43c1-bfe5-fb6f86582cf8" class="">The Product Development arm will be assessed based on its ability to deploy new dApps and improve existing features within the ecosystem in quick-to-market development cycles.</p><p id="273df5d9-e54d-4a94-8366-99b7839c8b1a" class="">
+</p><p id="54aad0f9-1811-4e98-b417-49e6102f2866" class="">Depending on the product, relevant are KPIs are:</p><ul id="77b44808-ad50-44e2-97f7-d1fe7f7aac4c" class="bulleted-list"><li style="list-style-type:disc">User Growth &amp; Retention rate</li></ul><ul id="1baad485-73cb-49aa-bc39-a8754ca0c11d" class="bulleted-list"><li style="list-style-type:disc">Churn Rate</li></ul><ul id="876a2649-d07c-441f-b94b-03e500c869f8" class="bulleted-list"><li style="list-style-type:disc">Retention rate</li></ul><ul id="632e8953-3b22-4a4c-9c0c-33015eea3b25" class="bulleted-list"><li style="list-style-type:disc">Development cycle KPIs</li></ul><ul id="52df6572-702c-461b-ab03-ccf22ed4a521" class="bulleted-list"><li style="list-style-type:disc">User Satisfaction Score</li></ul><p id="dd591cd5-560a-48fc-9261-affa3004f51d" class="">
+</p><p id="c2f74194-d6d0-4928-a51b-18cb7ff20295" class="">Simply put, if the initiatives taken within the development subDAO have traction, which is tightly defined as growing the userbase, ship features, and increasing main treasury size.</p><h3 id="77711e01-a72c-4840-98e3-7343c342e05e" class="">Growth &amp; Marketing</h3><p id="e1abfc0e-5caa-4657-a3ec-755727015360" class="">The Growth &amp; Marketing arm will be assessed based on the efficacy of its ability to grow the size partner ecosystem, outreach process, and social platforms through:</p><p id="d15049fd-acd4-4206-8ad8-6d75efc82844" class="">
+</p><ul id="cda82420-6ca3-4951-8859-ec83ab4a0f3c" class="bulleted-list"><li style="list-style-type:disc">Social Engagement Metrics</li></ul><ul id="ac552f4a-4f88-413b-a11b-82adc57307ed" class="bulleted-list"><li style="list-style-type:disc">Outreach funnel</li></ul><ul id="a50bbd53-cfa2-4445-be32-1dac15f02f4e" class="bulleted-list"><li style="list-style-type:disc">Partnership deal-flow</li></ul><h3 id="5e9d22b2-dfcb-4cd8-8cc8-d37f136b95b5" class="">Community &amp; Education</h3><p id="8b0863eb-00f9-4a2b-9f04-5b8b9df6a640" class="">The Community &amp; Education arm will be assessed the skilled labor density of the DAO Nation community. This figure is the proportion of the total number of people in the DAO Discord vs the number of people actively contributing.</p><p id="b1bb8eb0-af43-4b01-b6a2-53f0264e0487" class="">
+</p><ul id="eeea96fe-6113-4b57-8d16-7cb2977a1d55" class="bulleted-list"><li style="list-style-type:disc">The number of contributors who have completed internal bounties.</li></ul><ul id="17cb9566-68c6-4a59-8782-8bdf574b5d1a" class="bulleted-list"><li style="list-style-type:disc">Community growth and traction</li></ul><ul id="e46f5a77-8821-4ba3-b66a-52651797bbc2" class="bulleted-list"><li style="list-style-type:disc">The number of people actively working on initiatives</li></ul><ul id="d8bf6e58-e8f1-4f35-a6c6-62a275930fc7" class="bulleted-list"><li style="list-style-type:disc">Growing the number of incubated working groups and transitions to ventureDAOs.</li></ul><h3 id="386e2aad-28c7-4deb-8301-c6f99553b450" class="">Incubation &amp; Investments</h3><p id="24ad90b3-7b69-4527-aced-edccebbb4560" class="">The Incubation &amp; Investments team will be assessed based on the following KPIs:</p><p id="3bee2b3e-d5d0-4727-8602-64bb3c9442c0" class="">
+</p><ul id="274697b3-9e7a-486b-8b2c-926442d798a9" class="bulleted-list"><li style="list-style-type:disc">Dealflow</li></ul><ul id="3400b29f-3437-4556-9c77-574d92131d1a" class="bulleted-list"><li style="list-style-type:disc">Incubator application turnaround time</li></ul><ul id="8972ec71-2568-42b3-a443-8442e0cd5ff6" class="bulleted-list"><li style="list-style-type:disc">Absolute Return</li></ul><ul id="3511b4c2-99b0-44d8-a4f6-3d35d6625e8c" class="bulleted-list"><li style="list-style-type:disc">Internal Rate of Return (IRR)</li></ul><ul id="bcbcd71f-66ee-4137-aa55-f93cc43dd9a3" class="bulleted-list"><li style="list-style-type:disc">Multiple on Invested Capital (MOIC)</li></ul><h3 id="6dff108a-2c15-44cb-b888-64d5d13a64ea" class="">Governance &amp; Coordination</h3><p id="9554745c-4d27-4d8f-b438-5c3e56321063" class="">The Governance &amp; Coordination arms’ KPIs are measured by community participation in governance events across all subDAOs.</p><p id="0cbfae7b-eb3b-48e5-8f06-6c6991439f37" class="">
+</p><div id="06d1de55-232a-4565-a005-ab0f7f1b0f35" class="collection-content"><h4 class="collection-title">Governance Mining Emissions (1)</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Quarter</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesNumber"><path d="M4.46191,0 C3.8667,0 3.38428,0.482422 3.38428,1.07751 L3.38428,3.38425 L1.07764,3.38425 C0.482422,3.38425 0,3.86667 0,4.46179 C0,5.05688 0.482422,5.53931 1.07764,5.53931 L3.38428,5.53931 L3.38428,8.46063 L1.07764,8.46063 C0.482422,8.46063 0,8.94308 0,9.53818 C0,10.1333 0.482422,10.6157 1.07764,10.6157 L3.38428,10.6157 L3.38428,12.9224 C3.38428,13.5175 3.8667,13.9999 4.46191,13.9999 C5.05664,13.9999 5.53906,13.5175 5.53906,12.9224 L5.53906,10.6157 L8.46045,10.6157 L8.46045,12.9224 C8.46045,13.5175 8.94287,13.9999 9.53809,13.9999 C10.1333,13.9999 10.6157,13.5175 10.6157,12.9224 L10.6157,10.6157 L12.9224,10.6157 C13.5176,10.6157 14,10.1333 14,9.53818 C14,8.94308 13.5176,8.46063 12.9224,8.46063 L10.6157,8.46063 L10.6157,5.53931 L12.9224,5.53931 C13.5176,5.53931 14,5.05688 14,4.46179 C14,3.86667 13.5176,3.38425 12.9224,3.38425 L10.6157,3.38425 L10.6157,1.07751 C10.6157,0.482422 10.1333,0 9.53809,0 C8.94287,0 8.46045,0.482422 8.46045,1.07751 L8.46045,3.38425 L5.53906,3.38425 L5.53906,1.07751 C5.53906,0.482422 5.05664,0 4.46191,0 Z M5.53906,8.46063 L5.53906,5.53931 L8.46045,5.53931 L8.46045,8.46063 L5.53906,8.46063 Z"></path></svg></span>Governance Mining Allocation</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>$ESG Emission</th></tr></thead><tbody><tr id="05f3aaf7-52d9-45ff-9682-8fb831e7d35d"><td class="cell-title"><a href="https://www.notion.so/Q3-2022-05f3aaf752d945ff96828fb831e7d35d">Q3 2022</a></td><td class="cell-&gt;sk:">10%</td><td class="cell-U&gt;IP">400,000</td></tr><tr id="5e19bd7f-d67f-4f31-914e-5b595e5912f9"><td class="cell-title"><a href="https://www.notion.so/Q4-2022-5e19bd7fd67f4f31914e5b595e5912f9">Q4 2022</a></td><td class="cell-&gt;sk:">10%</td><td class="cell-U&gt;IP">400,000</td></tr><tr id="b3e7bcd8-63c7-4522-aba6-f0343c029207"><td class="cell-title"><a href="https://www.notion.so/Q1-2023-b3e7bcd863c74522aba6f0343c029207">Q1 2023</a></td><td class="cell-&gt;sk:">8%</td><td class="cell-U&gt;IP">320,000</td></tr><tr id="5d645f43-6afa-40ac-a41d-d642a60f241b"><td class="cell-title"><a href="https://www.notion.so/Q2-2023-5d645f436afa40aca41dd642a60f241b">Q2 2023</a></td><td class="cell-&gt;sk:">8%</td><td class="cell-U&gt;IP">320,000</td></tr><tr id="c0af33e2-66d0-4877-8e23-7cf6e76d18bc"><td class="cell-title"><a href="https://www.notion.so/Q3-2023-c0af33e266d048778e237cf6e76d18bc">Q3 2023</a></td><td class="cell-&gt;sk:">8%</td><td class="cell-U&gt;IP">320,000</td></tr><tr id="8124708c-df7e-4d92-8b63-a643ec0627ed"><td class="cell-title"><a href="https://www.notion.so/Q4-2023-8124708cdf7e4d928b63a643ec0627ed">Q4 2023</a></td><td class="cell-&gt;sk:">8%</td><td class="cell-U&gt;IP">320,000</td></tr><tr id="44c4bee7-b97d-4093-b7b2-5cac780f0d17"><td class="cell-title"><a href="https://www.notion.so/Q1-2024-44c4bee7b97d4093b7b25cac780f0d17">Q1 2024</a></td><td class="cell-&gt;sk:">6%</td><td class="cell-U&gt;IP">240,000</td></tr><tr id="c37b4d5b-5152-46ff-801a-2dca21f7b619"><td class="cell-title"><a href="https://www.notion.so/Q2-2024-c37b4d5b515246ff801a2dca21f7b619">Q2 2024</a></td><td class="cell-&gt;sk:">6%</td><td class="cell-U&gt;IP">240,000</td></tr><tr id="26f741ac-7f9f-4ed9-b48a-c11cd4c1a5fb"><td class="cell-title"><a href="https://www.notion.so/Q3-2024-26f741ac7f9f4ed9b48ac11cd4c1a5fb">Q3 2024</a></td><td class="cell-&gt;sk:">6%</td><td class="cell-U&gt;IP">240,000</td></tr><tr id="451df324-3097-4335-919f-8aebe866c2fc"><td class="cell-title"><a href="https://www.notion.so/Q4-2024-451df32430974335919f8aebe866c2fc">Q4 2024</a></td><td class="cell-&gt;sk:">6%</td><td class="cell-U&gt;IP">240,000</td></tr><tr id="42231951-8a48-42f4-9348-f343623ea8b5"><td class="cell-title"><a href="https://www.notion.so/Q1-2025-422319518a4842f49348f343623ea8b5">Q1 2025</a></td><td class="cell-&gt;sk:">4%</td><td class="cell-U&gt;IP">160,000</td></tr><tr id="dcbe4817-2db4-463a-a25f-8b298c10f48f"><td class="cell-title"><a href="https://www.notion.so/Q2-2025-dcbe48172db4463aa25f8b298c10f48f">Q2 2025</a></td><td class="cell-&gt;sk:">4%</td><td class="cell-U&gt;IP">160,000</td></tr><tr id="4a727d8e-4b6d-41b5-9b05-05e7673ade9b"><td class="cell-title"><a href="https://www.notion.so/Q3-2025-4a727d8e4b6d41b59b0505e7673ade9b">Q3 2025</a></td><td class="cell-&gt;sk:">4%</td><td class="cell-U&gt;IP">160,000</td></tr><tr id="95e8cee5-1104-428c-8796-39fcba44e08a"><td class="cell-title"><a href="https://www.notion.so/Q4-2025-95e8cee51104428c879639fcba44e08a">Q4 2025</a></td><td class="cell-&gt;sk:">4%</td><td class="cell-U&gt;IP">160,000</td></tr><tr id="7de7c354-2f9a-47cd-8dbb-c0a6a7fa51ae"><td class="cell-title"><a href="https://www.notion.so/2026-7de7c3542f9a47cd8dbbc0a6a7fa51ae">2026+</a></td><td class="cell-&gt;sk:">8%</td><td class="cell-U&gt;IP">320,000</td></tr></tbody></table></div><blockquote id="b75cf022-e275-4468-983a-5fbaec918944" class="">Unallocated quarterly emissions will be distributed among the next year’s budget.</blockquote><h1 id="1afaecf1-8c19-4e08-a6ea-69231f60eb86" class="">DAO Nation Infrastructure Roadmap</h1><p id="b7f595b5-3964-4bf4-bb2b-975fe3202d45" class="">To enable DAO Nation to apply its vision for global-scale impact, we will launch a diversified array of products and tools, to allow its members streamlined access to liquidity, funding, and knowledgebase.</p><p id="a3b97830-95a3-4391-b563-8410a98ca0ab" class="">All products and programs mentioned below will be implemented during Phase 1 of DAO Nation’s launch, in Q2 2022:</p><h2 id="4d91a28a-6c46-4771-89b7-18c9554a7479" class="">Token Launchpad</h2><p id="8cfd266e-9c30-4a03-b66c-8013c2a4c016" class="">From IDOs to presales, token launchpads are one of the most practical ways for an emerging web3 project to collect funding by distributing a portion of its token supply as a de-facto pre/seed round and bootstrap its liquidity. </p><p id="52300f40-78c5-46ed-8786-feaacfe708ca" class="">As its first infrastructure product, DAO Nation has built a custom, permissionless launchpad that will enable venture subDAOs and other ecosystem projects to raise community funding, a decentralized alternative VC backing.</p><p id="b5bbbf9b-cd07-4184-9c7e-a425ab3217c2" class=""><strong>A Verified Presale or IDO</strong><strong> </strong>is a project that was either spawned as a ventureDAO or joined the DAO Nation ecosystem.  </p><p id="9292648a-71bb-430d-b904-db2763e90a37" class=""><strong>Any verified presale/IDO </strong>is promoted within and by the DAO Nation ecosystem, which also provides initial funding/liquidity to assist with pool bootstrapping, as well as applying a network effect and synergies between early-stage protocols.</p><p id="3b185a24-2ccf-469c-b503-667eea14c2f2" class="">Gamified NFT minting capabilities will be added to allow the creation of ReFi-centric pfp communities.</p><h2 id="83695cb8-9ede-4e0d-bc80-d64fd8d0d4ee" class=""><strong>Bonds</strong></h2><p id="1c26c082-dfb8-4ac3-8815-6926ad76d0b6" class="">Bonding is a mechanism in which a user can sell assets to a protocol in exchange for DAO Nation’s native token. By implementing bonds, users can purchase $ESG tokens at a discounted rate directly from its platform.</p><p id="4bc40ebb-be90-4b49-b842-f2af7d050796" class="">Bond prices are determined by the supply and demand of the bonds and include a vesting period to prevent arbitrage exit.</p><p id="c216e52c-06bb-425a-96bc-86ceb351eeed" class="">By offering $ESG bonds, DAO Nation’s treasury will be able to diversify with high-yielding assets, stablecoins, and protocol-owned liquidity.</p><h2 id="88d77a7b-ac2d-43cf-8682-2c45ec242ece" class="">ReFinder</h2><p id="3437cdcf-fc8d-4837-8d72-9a9e4b30706c" class="">With the emergence of ReFi, we identified a lack of viable tools to compare and analyze new projects in the field, a clear need from both contributors and investors. </p><p id="6390b719-31f5-41b2-9491-3a05483f8649" class="">The most established general crypto analytics firms act as generalists in their analysis, and as a result, no real depth or insight can be derived from said analysis. ReFinder fixes this critical issue by focusing the analysis strictly on ReFi DAOs with a focus on quality and depth of analysis over quantity. What this means is dedicated metrics for the measurable KPIs of a DAO, like treasury size, number of unique protocol users, and expert analysis of protocol fundamentals and value propositions.</p><h2 id="b4e833ae-c0fd-4acb-98e5-95fa426fe549" class="">ReFi Index &amp; ETF</h2><p id="095c6add-9613-4581-bf98-d152785b7ec3" class="">The number of ReFi protocols is growing at a rapid pace. </p><p id="e7861ff1-d20c-48e4-8f37-2f1a98c8d36a" class="">DAO Nation will be introducing a ReFi index to accurately track the market sentiment, utilizing on-chain and off-chain data on financials and alternative data points to create proprietary ratings. </p><p id="0de02b89-2c0e-4a17-afe8-c8cad00ddd2e" class="">In addition, we are building ETF products that provide institutional and private investors with diversified exposure to the ReFi market.</p><h2 id="3726e39a-1a1e-4e54-a99a-061ac6d80fc0" class="">DAO Nation Fellowships</h2><p id="9afe5f94-5529-4d72-9940-8ea49e283b12" class="">The main problem with building a DAO Aggregator, whose goal is to connect new contributors and founders together, is that the founders of new companies have even less tolerance for inexperienced labor than an established company. This is due to the fact that a founder can only plan as far as the runway allows. In practice, Coinbase can afford to take a much longer-term approach to hire talent than a new DAO. It’s much harder to only have one side of the equation like entry-level positions or ambitious inexperienced labor on their own. This analysis of the talent shortage specifically in ReFi has led us to the conclusion that the fact that all solutions must have the pipeline of ambitious inexperienced labor to entry-level opportunities upfront. </p><p id="db29ecf9-09d4-4e06-8fe7-0dba427d8a91" class="">DAO Nation plans to be a nexus point for onboarding - not only for ReFi, but the entire ecosystem. The path to ensure this with the highest probability is to perform the whole training process in-house - from the basics to opportunities to beyond. </p><p id="8382563f-f074-4558-9f3d-815f3b2e6c24" class="">This guarantees for all DAO Nation fellows that on the other side of each mentorship is a stack of opportunities &amp; bounties, issued by DAO Nation, to hone their skills. These can be anywhere from protocol analysis bounties, bug fixes, new projects, and everywhere in between, that are exclusive to new DAO members. </p><p id="754500b6-5d77-4557-a8f5-1749b6c7dc40" class="">As they graduating the program - members can join/found working groups, start completing public bounties, and participate in the governance mining to collect $ESG rewards.</p><h2 id="44be8073-7830-4cd4-a030-50594dd01cd2" class="">DAO Incubation as a Service</h2><p id="408c8f04-4184-4fc0-b0ed-1d75ee60102b" class="">Bottom-up innovation in the DAO Nation ecosystem’s main goal.</p><p id="02aa5c27-b927-4b8c-a79c-ed684286d818" class="">We aim for rapid expansion of the ReFi ecosystem through venture subDAO investments. The most battle-tested approach to growing any entrepreneurship-driven system is to give ambitious people capital, advice, resources, and practice the non-interference policy except in extreme cases. A DAO incubator where we share with protocol founders our ecosystem network - product development, recruiting, partnerships, and fundraising to support their vision. </p><p id="dce81479-2f36-46c6-ac6d-0b3eb72eed05" class=""><strong>The parentDAO will determine budgets for the Incubation-as-a-Service (IAAS) subDAO on an ongoing basis.</strong> This allows us to ramp up activity gradually as the treasury grows. </p><p id="61af2e52-abaa-419e-9f50-414deb964e67" class="">Projects are subject to thorough qualitative analysis, and the findings will ultimately be presented to the investment arm’s GP committee for review and potential on-chain approval.</p><p id="5a76965e-34d3-4b3a-85cd-788294b3eaeb" class="">
+</p><p id="bdd23efc-c8e3-45ee-8a4d-b91ffadedec4" class=""><strong>Project Research &amp; Incubation Proposal Process</strong></p><p id="380ce5c0-8686-4f72-b3dc-885bc54707d0" class="">The Project Research Proposal group submits an application on behalf of an eligible project they’ve identified with the intent of writing a full due-diligence report. If approved, the research working group will be compensated with $ESG from governance mining. These findings will be attached to a Project Incubation Proposal which is subject to review by the GP committee who will decide whether or not to invest. </p><p id="aa1f49f0-17ea-4855-ac37-89affa4699a2" class="">Through this process, DAO Nation aims to invest primarily in talented community members, some will originate from its Fellowship programs. During the incubation, the team will remain a working group. When a product or prototype is finalized, they’ll form a ventureDAO.</p><p id="b9b05080-ffa5-4114-81ba-8fb566b35145" class="">For follow-on funding requests and direct investing in outside projects, DAO Nation’s research and due diligence working groups will perform qualitative research and due diligence. Its analysis template will include, but not be limited to the following:</p><p id="b4e83fdb-d048-4dc0-b8fb-174a54ba1500" class="">
+</p><ol type="1" id="15f2c007-190f-4dfa-9a35-3ac06da972fb" class="numbered-list" start="1"><li><strong>Eligibility</strong><ol type="a" id="d8f5071d-c34c-4e74-8036-fc328c516af8" class="numbered-list" start="1"><li>Does the protocol align with DAO Nation’s mission?</li></ol><ol type="a" id="46979ca7-53c7-426f-b55a-c8385fe138f1" class="numbered-list" start="2"><li>Are the proposed costs compatible with the deal sizes defined in the budget?</li></ol></li></ol><ol type="1" id="25eb77b9-aeef-4e93-8fc3-4364d8589b7d" class="numbered-list" start="2"><li><strong>Product</strong><ol type="a" id="9b6ab5c9-f9c5-444e-ac01-e6bb36aade36" class="numbered-list" start="1"><li>Does the product introduce any novelties?</li></ol><ol type="a" id="bab0f032-8c1d-4aac-946f-d05f449d5402" class="numbered-list" start="2"><li>Do they bring meaningful improvements vs existing protocols?</li></ol><ol type="a" id="1da75ce6-8456-4aae-8aab-21f6c9c5dfbb" class="numbered-list" start="3"><li>What is their revenue model?</li></ol><ol type="a" id="c7a8efe2-3b87-4ba0-82db-56b609bba1ad" class="numbered-list" start="4"><li>Have they established a product-market fit?</li></ol><ol type="a" id="4d5409bf-c498-4637-95d1-beba177e266e" class="numbered-list" start="5"><li>What partnerships and integrations are they pursuing?<ol type="i" id="af684b3d-e383-4367-8e9c-5fdd51537a58" class="numbered-list" start="1"><li>Have they secured any as of yet?</li></ol></li></ol></li></ol><ol type="1" id="c7684db3-5090-4f4c-b6ca-5ff13a171cfe" class="numbered-list" start="3"><li><strong>Project management</strong><ol type="a" id="24f210dc-00c1-4e1c-a739-bba42a1f4c0a" class="numbered-list" start="1"><li>Are the milestones for the project clearly defined?</li></ol><ol type="a" id="18f8bef2-ffd3-4c96-8e44-52dcb814f010" class="numbered-list" start="2"><li>Is there a well-defined plan for the longer term?</li></ol><ol type="a" id="d77bbe87-754f-4cb4-becb-774d251981bf" class="numbered-list" start="3"><li>Do they have a clear breakdown of use of funds?<ol type="i" id="fac6dbe0-fefa-4003-9d91-bdcd1c1e6fd6" class="numbered-list" start="1"><li>Are the costs based on quotes or approximations?</li></ol></li></ol></li></ol><ol type="1" id="13851b3b-ddce-4e0a-944f-f70d67280636" class="numbered-list" start="4"><li><strong>Tokenomics</strong><ol type="a" id="f33de0ab-a0d5-472d-a95b-dc5caf90c732" class="numbered-list" start="1"><li>How is or will the token be distributed at genesis?</li></ol><ol type="a" id="df2d31bb-b9e7-47e5-af1b-e88156b9d187" class="numbered-list" start="2"><li>To what extent do token holders have a say in governance?</li></ol><ol type="a" id="a343c26f-66d2-4364-8a63-eb8f7e4718c7" class="numbered-list" start="3"><li>Does the issuance model help facilitate improvements within the protocol?</li></ol><ol type="a" id="9757afeb-3b83-4ecc-bbde-d004c57b42c2" class="numbered-list" start="4"><li>Is there a model for capturing and distributing value to token holders?</li></ol><ol type="a" id="0024e047-c168-42cb-8665-711a4fd43dbc" class="numbered-list" start="5"><li>What are the plans for securing and maintaining liquidity?</li></ol><ol type="a" id="4d2c7bcc-0713-435e-8a70-3fe7b82d2664" class="numbered-list" start="6"><li>Are there/will there be productive use cases for the token?</li></ol></li></ol><ol type="1" id="05bd1faa-41a0-4dfd-ae23-6a14708e24e4" class="numbered-list" start="5"><li><strong>Market</strong><ol type="a" id="8a8aa673-263f-443b-8084-f6e4fc569286" class="numbered-list" start="1"><li>What is the market size?<ol type="i" id="f3105260-c4aa-431b-b79c-8e626d1223e7" class="numbered-list" start="1"><li>What is the addressable market size?</li></ol></li></ol><ol type="a" id="d6812208-9cbc-41a7-8ed9-ad7a0b6b6308" class="numbered-list" start="2"><li>What are the projections for the total and addressable markets going forward?</li></ol><ol type="a" id="314ecf28-1cf6-4239-916e-f4be928ee5e3" class="numbered-list" start="3"><li>What does the competitive landscape look like?<ol type="i" id="9142b843-edb0-47b8-876e-f8af92798306" class="numbered-list" start="1"><li>Who are the direct competitors?</li></ol><ol type="i" id="f858f20b-450a-4562-9c91-c2fbcf360100" class="numbered-list" start="2"><li>Who are the indirect competitors?</li></ol></li></ol></li></ol><ol type="1" id="e71df8aa-1f29-49a0-8a5e-2c711899daf3" class="numbered-list" start="6"><li><strong>Team</strong><ol type="a" id="d0d5d702-748e-4f27-943d-3f14cfe6155b" class="numbered-list" start="1"><li>Does the team have relevant experience?<ol type="i" id="7562a661-9da1-421d-9e96-4eebaa86c7df" class="numbered-list" start="1"><li>Do they have an online track record?</li></ol></li></ol><ol type="a" id="b5c29e13-2316-47cb-8a5a-6dd88681096a" class="numbered-list" start="2"><li>Are they active within the community?</li></ol><ol type="a" id="2da2f557-ad8d-41a3-9ff3-cad90edbc03e" class="numbered-list" start="3"><li>To what degree do they know the market they are about to enter?<ol type="i" id="c789a5be-0ea1-43ce-b56e-8d595750b6a6" class="numbered-list" start="1"><li>What level of research have they done prior to seeking funding for their project?</li></ol></li></ol></li></ol><ol type="1" id="b4769431-49b1-477b-b131-b7c71fa3a500" class="numbered-list" start="7"><li><strong>Governance</strong><ol type="a" id="d020e87e-e2a6-4b85-8486-1705a54efd1c" class="numbered-list" start="1"><li>Are there admin keys?<ol type="i" id="d65f144a-469e-44f0-9e77-e4586fff152f" class="numbered-list" start="1"><li>If multisig has the final say, what powers does the multisig hold?<ol type="1" id="7057d2b9-fd8d-4e0d-8226-1f251b271745" class="numbered-list" start="1"><li>How long between the vote and final sign-off?</li></ol><ol type="1" id="dfaa7564-48ff-4789-9143-9bf36fc2b68d" class="numbered-list" start="2"><li>How many signers to form a consensus?</li></ol></li></ol></li></ol><ol type="a" id="c5fdc8f1-df49-4a66-9518-33554b284eb6" class="numbered-list" start="2"><li>Are contributors within the DAO active participants in governance?<ol type="i" id="dd8c50a7-158b-494b-b1cc-370ec7d121c3" class="numbered-list" start="1"><li>Is there a healthy level of debate around proposals?</li></ol></li></ol><ol type="a" id="d7c0cd86-915f-4012-aa4c-86bc28d806be" class="numbered-list" start="3"><li>What does the governance infrastructure look like?</li></ol><ol type="a" id="aa2e6aea-a435-422a-b2af-8d8c48c24b09" class="numbered-list" start="4"><li>What is the quality of the governance process?</li></ol></li></ol><p id="662c8dcf-6e28-4a32-b7bf-0d09ea763f32" class="">
+</p><p id="6742e976-54bc-4941-8102-2e4fbcd799a8" class="">Depending on the level of resources needed by the incubated protocol, DAO Nation will keep 5-15% of the token supply in return. Based on the research, the Investment Arm’s elected GP committee makes the final decision on whether to invest or not.</p></div></article></body></html>
